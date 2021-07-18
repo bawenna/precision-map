@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: precision-map
+  namespace: default
+  labels:
+    app: precision-map
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: precision-map
+  template:
+    metadata:
+      name: precision-map
+      labels:
+        app: precision-map
+    spec:
+      containers:
+        - name: precision-map
+          image: bawenna/precision-map:test
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: precision-map
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
