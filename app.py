@@ -22,7 +22,7 @@ def form():
                 if error:
                     context = {"error": True, "error_message": error}
                 else:
-                    context = {"output": json.dumps(final_data), "enable_output": True}
+                    context = {"output": json.dumps(final_data, indent=2), "enable_output": True}
             else:
                 context = {"error": True, "error_message": "Incorrect format"}
     else:

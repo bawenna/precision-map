@@ -13,7 +13,7 @@ module "eks" {
   worker_groups = [
     {
       name                          = "worker-group-1"
-      instance_type                 = "t2.micro"
+      instance_type                 = local.instance_type
       additional_userdata           = "it works!"
       asg_desired_capacity          = 2
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
