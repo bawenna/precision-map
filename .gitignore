@@ -214,3 +214,7 @@ cython_debug/
 # Terraform
 *.env.*.tfvars
 *.terraform
+terraform.*
+
+# Kubenetes config file
+kubeconfig_*

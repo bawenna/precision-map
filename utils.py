@@ -37,6 +37,7 @@ def process_data_for_output(inputdata):
                     # extract all the temperature data for calculation
                     temp_data = [x['data'] for x in value]
                     reading = statistics.mean(temp_data)
+                    # required at least two datapoints
                     stdev = statistics.stdev(temp_data)
                     precision = get_precision(reading, ref_temp_reading)
                     if precision <= 0.5 and stdev < 3:

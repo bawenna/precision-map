@@ -30,7 +30,7 @@ resource "kubernetes_deployment" "very-first-eks-deployment" {
 
       spec {
         container {
-          image = "bawenna/precision-map:test"
+          image = local.image_id
           name  = "precision-map"
           port {
             container_port = 5000
