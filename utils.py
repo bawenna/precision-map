@@ -28,16 +28,15 @@ def process_data_for_output(inputdata):
         formatted_data_objects = json.loads(inputdata.read())
         reference = formatted_data_objects.get("reference")
         information = formatted_data_objects.get("data")
-        rel_humidity_reading = reference.get("ref-hum")
+        ref_humidity_reading = reference.get("ref-hum")
         ref_temp_reading = reference.get("ref-temp")
         final_data = dict()
         for name, objects in information.items():
             for type, value in objects.items():
                 if type == 'thermometer':
+                    # extract all the temperature data for calculation
                     temp_data = [x['data'] for x in value]
                     reading = statistics.mean(temp_data)
-                    if len(temp_data) >= 1:
-                        temp_data = temp_data + [0,0]
                     stdev = statistics.stdev(temp_data)
                     precision = get_precision(reading, ref_temp_reading)
                     if precision <= 0.5 and stdev < 3:
@@ -47,11 +46,11 @@ def process_data_for_output(inputdata):
                     else:
                         final_data[f"{name}_{type}"] = "precise"
                 elif type == 'humidity':
+                    # init an array to store each percentage for later
                     percentage_diff_array = []
                     for x in value:
-                        diff = rel_humidity_reading - x['data'] if rel_humidity_reading - x['data'] > 0 else x[
-                                                                                                                 'data'] - rel_humidity_reading
-                        percentage_diff = ((diff / rel_humidity_reading) * 100)
+                        diff = ref_humidity_reading - x['data'] if ref_humidity_reading - x['data'] > 0 else x['data'] - ref_humidity_reading
+                        percentage_diff = ((diff / ref_humidity_reading) * 100)
                         percentage_diff_array.append(percentage_diff)
                     percentage_diff_mean = statistics.mean(percentage_diff_array)
                     if percentage_diff_mean > 1:

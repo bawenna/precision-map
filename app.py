@@ -36,6 +36,7 @@ def get_sample_json():
     try:
         file = open("sample.json", "r").read()
     except Exception as e:
+        # just in case when sample.json is not available
         file = '''{"reference":{"ref-temp":50,"ref-hum":50},"data":{"temp-1":{"humidity":[{"timestamp":"2007-04-05T22:12","data":45}],"thermometer":[{"timestamp":"2007-04-05T22:00","data":72.4}]},"temp-2":{"thermometer":[{"timestamp":"2007-04-05T22:12","data":69.4}]}}}'''
     si.write(json.loads(json.dumps(file)))
     output = make_response(si.getvalue())

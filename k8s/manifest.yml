@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: precision-map
-          image: bawenna/precision-map:test
+          image: bawenna/precision-map:latest
           ports:
             - containerPort: 5000
           imagePullPolicy: Always
