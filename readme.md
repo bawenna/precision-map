@@ -10,7 +10,7 @@ This is a simple widget to process the log files in order to automate the qualit
 2) Run waitress-serve --listen=*:5000 app:app to access the application via localhost:5000
 
 ### Local Kubenetes Setup
-1) Install Kind: https://kind.sigs.k8s.io/docs/user/quick-start/
+1) Install Kind: [Link](https://kind.sigs.k8s.io/docs/user/quick-start/)
 2) Under the k8s directory, run kind create cluster --config kind-ingress-local.yaml --image kindest/node:v1.18.8 to start off a local cluster
 3) Run kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml to deploy a Nginx Ingress Controller
 4) Under the k8s directory, run kubectl apply -f manifest-local.yml to start off our application
@@ -30,8 +30,8 @@ This is a simple widget to process the log files in order to automate the qualit
 9) You can access to application by visiting the elb DNS name.
 
 ### Terraform
-Followed guide here for initializing the cluster: https://learn.hashicorp.com/tutorials/terraform/eks
-1) You need to configure an IAM user with appropriate permission to create the EKS cluster: https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md
+Followed guide here for initializing the cluster: [Link](https://learn.hashicorp.com/tutorials/terraform/eks)
+1) You need to configure an IAM user with appropriate permission to create the EKS cluster: [Link](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md)
 2) Run terraform init to initialize the enviornment
 3) Run terraform plan to examine the output
 4) Run terraform apply to deploy the eks cluster with the hosted application
