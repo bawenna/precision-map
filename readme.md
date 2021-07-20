@@ -5,6 +5,16 @@
 ### About
 This is a simple widget to process the log files in order to automate the quality control evaluation and display the result.
 
+### Workflow
+1) Detect Userinput file
+2) Validate format
+3) Extract reference values from input file
+4) Extract Sensor type
+5) Extract Readings
+6) Evaludate based on given rules
+7) Produce sensor quality
+8) Output
+
 ### Local Development Setup
 1) Install Python3, then run pip3 install -r requirements.txt to install flask and waitress
 2) Run waitress-serve --listen=*:5000 app:app to access the application via localhost:5000
@@ -26,7 +36,7 @@ This is a simple widget to process the log files in order to automate the qualit
 5) Run the following command: eksctl create cluster --name precision-map --version 1.20 --region us-east-2 --nodegroup-name linux-nodes --node-type t2.micro --nodes 2
 6) This will create a eks cluster with appropriate VPC/SG/Subnet/ELB to deploy
 7) Run aws eks update-kubeconfig --name precision-map --region us-east-2 to merge the kube config to local machine
-8) Under the k8s folder, run kubectl apply -f manifest.yml to deploy the application to the cluster
+8) Under the k8s folder, run kubectl apply -f manifest.yml to deploy the application to the cluster, OR connect to the cluster with Lens and manually deploy.
 9) You can access to application by visiting the elb DNS name.
 
 ### Terraform
