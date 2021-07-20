@@ -10,4 +10,5 @@ COPY utils.py .
 COPY app.py .
 COPY sample.json .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "waitress-serve", "--listen=*:5000" , "app:app"]
