@@ -1,5 +1,6 @@
 import io
 import json
+from waitress import serve
 
 from flask import Flask, request, render_template, make_response
 
@@ -46,4 +47,4 @@ def get_sample_json():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    serve(app, host='0.0.0.0', port=5000)
